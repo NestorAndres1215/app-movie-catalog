@@ -1,7 +1,7 @@
-// Variables
-$primary: #1a2b4e;
-$white: #ffffff;
-$accent: #e50914;
+// === VARIABLES ===
+$primary: #1a2b4e;    // Azul marino oscuro
+$white: #ffffff;     // Blanco puro
+$accent: #e50914;    // Rojo (acento)
 $transition: all 0.3s ease;
 
 // === MIXINS ===
@@ -9,29 +9,64 @@ $transition: all 0.3s ease;
   padding: 1.5rem 1.25rem;
   border-bottom: 1px solid rgba($white, 0.1);
   text-align: center;
-  .logo { margin: 0; font-size: 1.6rem; font-weight: 800; color: $white; }
+  .logo {
+    margin: 0;
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: $white;
+  }
 }
 
 @mixin sidebar-nav {
   padding: 1rem 0;
-  ul { list-style: none; padding: 0; margin: 0; }
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
   .nav-link {
-    display: flex; align-items: center; padding: 0.85rem 1.5rem;
-    color: rgba($white, 0.8); text-decoration: none; font-weight: 500;
-    border-left: 4px solid transparent; transition: $transition;
+    display: flex;
+    align-items: center;
+    padding: 0.85rem 1.5rem;
+    color: rgba($white, 0.8);
+    text-decoration: none;
+    font-weight: 500;
+    border-left: 4px solid transparent;
+    transition: $transition;
 
-    .nav-icon { width: 24px; height: 24px; margin-right: 14px; font-size: 1.1rem; opacity: 0.8; }
-    .nav-label { flex: 1; font-size: 0.95rem; }
+    .nav-icon {
+      width: 24px;
+      height: 24px;
+      margin-right: 14px;
+      font-size: 1.1rem;
+      opacity: 0.8;
+    }
+    .nav-label {
+      flex: 1;
+      font-size: 0.95rem;
+    }
 
     &:hover {
-      background: rgba($white, 0.1); color: $white; padding-left: 1.75rem;
-      .nav-icon { opacity: 1; transform: scale(1.1); }
+      background: rgba($white, 0.1);
+      color: $white;
+      padding-left: 1.75rem;
+      .nav-icon {
+        opacity: 1;
+        transform: scale(1.1);
+      }
     }
 
     &.active {
-      background: rgba($white, 0.15); color: $white; font-weight: 600;
-      border-left-color: $accent; padding-left: 1.75rem;
-      .nav-icon { opacity: 1; color: $accent; transform: scale(1.1); }
+      background: rgba($white, 0.15);
+      color: $white;
+      font-weight: 600;
+      border-left-color: $accent;
+      padding-left: 1.75rem;
+      .nav-icon {
+        opacity: 1;
+        color: $accent;
+        transform: scale(1.1);
+      }
     }
   }
 }
@@ -50,10 +85,16 @@ $transition: all 0.3s ease;
   overflow-y: auto;
   box-shadow: 2px 0 15px rgba(0, 0, 0, 0.25);
 
-  @media (max-width: 992px) { display: none; }
+  @media (max-width: 992px) {
+    display: none;
+  }
 
-  .sidebar-header { @include sidebar-header; }
-  .sidebar-nav { @include sidebar-nav; }
+  .sidebar-header {
+    @include sidebar-header;
+  }
+  .sidebar-nav {
+    @include sidebar-nav;
+  }
 }
 
 // === NAVBAR HORIZONTAL (Móvil) ===
@@ -91,10 +132,15 @@ $transition: all 0.3s ease;
 
       &.active {
         color: $white;
-        .nav-icon { color: $accent; transform: scale(1.1); }
+        .nav-icon {
+          color: $accent;
+          transform: scale(1.1);
+        }
       }
 
-      &:active { transform: scale(0.95); }
+      &:active {
+        transform: scale(0.95);
+      }
     }
   }
 }
@@ -113,13 +159,19 @@ $transition: all 0.3s ease;
   transition: $transition;
   box-shadow: 2px 0 20px rgba(0, 0, 0, 0.3);
 
-  &.open { transform: translateX(0); }
+  &.open {
+    transform: translateX(0);
+  }
 
-  .sidebar-header { @include sidebar-header; }
-  .sidebar-nav { @include sidebar-nav; }
+  .sidebar-header {
+    @include sidebar-header;
+  }
+  .sidebar-nav {
+    @include sidebar-nav;
+  }
 }
 
-// === BOTÓN "MÁS" ===
+// === BOTÓN "MÁS" (Flotante) ===
 .btn-sidebar-toggle {
   position: fixed;
   bottom: 1rem;
@@ -154,27 +206,41 @@ $transition: all 0.3s ease;
   }
 
   &.open {
-    span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
-    span:nth-child(2) { opacity: 0; }
-    span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+    span:nth-child(1) {
+      transform: translateY(8px) rotate(45deg);
+    }
+    span:nth-child(2) {
+      opacity: 0;
+    }
+    span:nth-child(3) {
+      transform: translateY(-8px) rotate(-45deg);
+    }
   }
 }
 
 // === OVERLAY ===
 .sidebar-overlay {
   position: fixed;
-  top: 0; left: 0; width: 100%; height: 100%;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   background: rgba(0, 0, 0, 0.6);
   z-index: 1099;
-  opacity: 0; visibility: hidden; transition: $transition;
+  opacity: 0;
+  visibility: hidden;
+  transition: $transition;
   backdrop-filter: blur(5px);
 
-  &.open { opacity: 1; visibility: visible; }
+  &.open {
+    opacity: 1;
+    visibility: visible;
+  }
 }
 
 // === CONTENIDO PRINCIPAL ===
 .main-content {
-  margin-left: 260px;
+  margin-left:0px;
   padding: 2rem;
   min-height: 100vh;
   transition: $transition;
@@ -193,7 +259,7 @@ body {
 }
 // Ajuste del contenido principal
 body {
-  padding-left: 280px;
+  padding-left: 260px;
   transition: $transition;
 
   @media (max-width: 992px) {

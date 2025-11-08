@@ -1,15 +1,20 @@
 import MovieCard from "../MovieCard/MovieCard";
 
 const MovieList = ({ movies = [], isSeries = false }) => {
-  // Si movies no está definido o está vacío, no rompe el map
   if (!movies || movies.length === 0) {
-    return <p>No hay elementos para mostrar.</p>;
+    return (
+      <div className="text-center py-4">
+        <p className="text-muted">No hay elementos para mostrar.</p>
+      </div>
+    );
   }
 
   return (
-    <div className="movie-list">
+    <div className="row g-4">
       {movies.map((m) => (
-        <MovieCard key={m.id} movie={m} isSeries={isSeries} />
+        <div key={m.id} className="col-6 col-md-4 col-lg-3">
+          <MovieCard movie={m} isSeries={isSeries} />
+        </div>
       ))}
     </div>
   );
