@@ -1,4 +1,3 @@
-
 import MovieList from "../../components/MovieList/MovieList";
 import useMovies from "../../hooks/useMovies";
 
@@ -8,14 +7,14 @@ const Home = () => {
   if (loading) return <p>Cargando películas...</p>;
 
   return (
-    <div className="home-container">
-      <h2>Películas Populares</h2>
+    <div className="home-page">
+      <h2>Populares</h2>
       <MovieList movies={popularMovies} />
 
-      <h2>Más Valoradas</h2>
+      <h2>Mejor valoradas</h2>
       <MovieList movies={topRatedMovies} />
 
-      <h2>Próximos Estrenos</h2>
+      <h2>Próximos estrenos</h2>
       <MovieList movies={upcomingMovies} />
     </div>
   );

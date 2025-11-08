@@ -1,25 +1,32 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 
-export const FavoritesContext = createContext();
+// Creamos el contexto
+const FavoritesContext = createContext();
 
-const FavoritesProvider = ({ children }) => {
+// Provider
+export const FavoritesProvider = ({ children }) => {
   const [favorites, setFavorites] = useState([]);
 
+  // Cargar desde localStorage al inicio
   useEffect(() => {
-    const saved = JSON.parse(localStorage.getItem("favorites")) || [];
-    setFavorites(saved);
+    const stored = localStorage.getItem("favorites");
+    if (stored) setFavorites(JSON.parse(stored));
   }, []);
 
+  // Guardar en localStorage cuando cambian
   useEffect(() => {
     localStorage.setItem("favorites", JSON.stringify(favorites));
   }, [favorites]);
 
+  // Funciones para agregar / eliminar favoritos
   const addFavorite = (movie) => {
-    setFavorites(prev => [...prev, movie]);
+    if (!favorites.find((m) => m.id === movie.id)) {
+      setFavorites([...favorites, movie]);
+    }
   };
 
   const removeFavorite = (id) => {
-    setFavorites(prev => prev.filter(movie => movie.id !== id));
+    setFavorites(favorites.filter((m) => m.id !== id));
   };
 
   return (
@@ -29,4 +36,6 @@ const FavoritesProvider = ({ children }) => {
   );
 };
 
-export default FavoritesProvider;
+// Hook personalizado
+export const useFavorites = () => useContext(FavoritesContext);
+
