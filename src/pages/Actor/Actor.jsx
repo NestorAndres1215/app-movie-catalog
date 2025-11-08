@@ -6,7 +6,7 @@ const Actors = () => {
 
   useEffect(() => {
     const fetchActors = async () => {
-      const all = await movieApi.getAllPopularActors(5); // 5 páginas
+      const all = await movieApi.getAllPopularActors(24); // 5 páginas
       setActors(all);
     };
     fetchActors();

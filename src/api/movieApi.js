@@ -33,7 +33,7 @@ const movieApi = {
     getPopularActors: (page = 1) =>
         axiosClient.get(`/person/popular`, { params: { page } }),
 
-    getAllPopularActors: async (maxPages = 5) => {
+    getAllPopularActors: async (maxPages = 24) => {
         let allActors = [];
         for (let page = 1; page <= maxPages; page++) {
             const res = await axiosClient.get(`/person/popular`, { params: { page } });

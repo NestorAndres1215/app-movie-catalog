@@ -1,0 +1,129 @@
+// Variables
+$primary: #1a2b4e;
+$white: #ffffff;
+$gray: #6c757d;
+$gold: #ffc107;
+$border-radius: 14px;
+$transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+// Link
+.movie-card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  transition: $transition;
+
+  &:hover {
+    transform: translateY(-6px);
+  }
+}
+
+// Card
+.movie-card {
+  background: $white;
+  border-radius: $border-radius;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  transition: $transition;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  &:hover {
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.16);
+    transform: translateY(-6px);
+
+    .movie-overlay {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+// Imagen
+.movie-img-wrapper {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 2 / 3;
+
+  .movie-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+
+  .movie-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba($primary, 0.95));
+    color: $white;
+    padding: 1.5rem 1rem 1rem;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(15px);
+    transition: $transition;
+
+    .movie-title-overlay {
+      margin: 0 0 0.5rem;
+      font-size: 1rem;
+      font-weight: 700;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .movie-info-overlay {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+
+      .movie-year {
+        color: rgba($white, 0.9);
+      }
+
+      .movie-rating {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        color: $gold;
+
+        .star-icon {
+          font-size: 0.9rem;
+        }
+      }
+    }
+  }
+}
+
+// Info
+.movie-info {
+  padding: 0.75rem 1rem;
+  background: $white;
+  flex-grow: 1;
+
+  .movie-title {
+    font-weight: 600;
+    color: $primary;
+    font-size: 0.95rem;
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    line-height: 1.3;
+  }
+
+  .movie-year {
+    font-size: 0.8rem;
+    color: $gray;
+    margin-top: 0.25rem;
+  }
+}
